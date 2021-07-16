@@ -14,9 +14,11 @@
 
 ## Running
 ```
-$ export FLASK_APP=flaskr
+$ cd Surrogate
+$ export FLASK_APP=.
 $ export FLASK_ENV=development
 $ flask run
+$ ngrok http 5000
 ```
 
 ## References
