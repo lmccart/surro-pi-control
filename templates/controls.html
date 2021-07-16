@@ -1,0 +1,20 @@
+<!doctype html>
+<head>
+  <title>Hello from Flask</title>
+  <script src="{{ url_for('static', filename='jquery-3.6.0.min.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  
+  <section id='controls'>
+    <button id='left'>Left</button>
+    <button id='right'>Right</button>
+  </section>
+
+  <section id='main'>
+    <button id='shutdown'>Shutdown</button>
+    <button id='reboot'>Reboot</button>
+  </section>
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>

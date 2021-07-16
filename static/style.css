@@ -1,0 +1,23 @@
+body {
+  margin: 2em;
+  padding: 0;
+}
+
+section {
+  margin-bottom: 3em;
+}
+
+button {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  padding: 1em;
+  min-width: 10em;
+  margin-right: 1em;
+  cursor: pointer;
+}
+
+button:active {
+  background-color: white;
+  color: black;
+}
