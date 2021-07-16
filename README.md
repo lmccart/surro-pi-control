@@ -9,6 +9,7 @@
   ```
 * Install motor hat drivers https://www.waveshare.com/wiki/Motor_Driver_HAT
 * Install git: `sudo apt install git`
+* Install flask: `sudo pip install flask`
 
 
 
