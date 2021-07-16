@@ -15,11 +15,11 @@
 
 ## Running
 ```
-$ cd Surrogate
-$ export FLASK_APP=.
-$ export FLASK_ENV=development
-$ flask run
-$ ngrok http 5000
+cd Surrogate
+export FLASK_APP=.
+export FLASK_ENV=development
+flask run
+ngrok http 5000
 ```
 
 ## References
