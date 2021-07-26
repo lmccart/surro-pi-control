@@ -14,6 +14,7 @@
 
 
 ## Running
+Manual:
 ```
 cd Surrogate
 export FLASK_APP=.
@@ -21,6 +22,12 @@ export FLASK_ENV=development
 flask run
 ngrok http 5000
 ```
+With script (starts flask and ngrok to custom surrogate_tunnel endpoint:
+```
+./start-flask.sh
+./start-ngrok.sh
+```
+
 
 ## Pi Utils
 * scan for PI IPs: `arp -na | grep -i b8:27:eb`
@@ -30,3 +37,5 @@ ngrok http 5000
 * flask: https://flask.palletsprojects.com/en/2.0.x/tutorial/factory/
 * motor hat: https://www.waveshare.com/wiki/Motor_Driver_HAT
 * ngrok: https://dashboard.ngrok.com/get-started/setup
+* https://www.techcoil.com/blog/how-to-host-your-python-3-flask-mvp-with-supervisor-on-ubuntu-server-16-04/
+* 
