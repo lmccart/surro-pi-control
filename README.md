@@ -20,13 +20,9 @@ cd Surrogate
 export FLASK_APP=.
 export FLASK_ENV=development
 flask run
-ngrok http 5000
+ngrok start surrogate_tunnel
 ```
-With script (starts flask and ngrok to custom surrogate_tunnel endpoint:
-```
-./start-flask.sh
-./start-ngrok.sh
-```
+Howver, supervisor should start both of these process.
 
 
 ## Pi Utils
