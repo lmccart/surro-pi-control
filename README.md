@@ -23,7 +23,8 @@ ngrok http 5000
 ```
 
 ## Pi Utils
-* `arp -na | grep -i b8:27:eb` scan for IPs
+* scan for PI IPs: `arp -na | grep -i b8:27:eb`
+* setup wifi: `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`
 
 ## References
 * flask: https://flask.palletsprojects.com/en/2.0.x/tutorial/factory/
