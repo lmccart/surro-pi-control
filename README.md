@@ -22,6 +22,9 @@ flask run
 ngrok http 5000
 ```
 
+## Pi Utils
+* `arp -na | grep -i b8:27:eb` scan for IPs
+
 ## References
 * flask: https://flask.palletsprojects.com/en/2.0.x/tutorial/factory/
 * motor hat: https://www.waveshare.com/wiki/Motor_Driver_HAT
