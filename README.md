@@ -34,4 +34,3 @@ Howver, supervisor should start both of these process.
 * motor hat: https://www.waveshare.com/wiki/Motor_Driver_HAT
 * ngrok: https://dashboard.ngrok.com/get-started/setup
 * https://www.techcoil.com/blog/how-to-host-your-python-3-flask-mvp-with-supervisor-on-ubuntu-server-16-04/
-* 
