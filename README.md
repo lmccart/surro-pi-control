@@ -10,6 +10,10 @@
 * Install motor hat drivers https://www.waveshare.com/wiki/Motor_Driver_HAT
 * Install git: `sudo apt install git`
 * Install flask: `sudo pip install flask`
+* Upgrade flask to 2.0: `pip install --upgrade Flask`
+* Install dependecies:
+  * `pip install simple-websocket`
+  * `pip install flask-socketio`
 
 
 
@@ -34,3 +38,4 @@ Howver, supervisor should start both of these process.
 * motor hat: https://www.waveshare.com/wiki/Motor_Driver_HAT
 * ngrok: https://dashboard.ngrok.com/get-started/setup
 * https://www.techcoil.com/blog/how-to-host-your-python-3-flask-mvp-with-supervisor-on-ubuntu-server-16-04/
+* https://flask-socketio.readthedocs.io/en/latest/getting_started.html

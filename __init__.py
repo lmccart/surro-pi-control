@@ -1,95 +1,75 @@
 #!/usr/bin/python
 
 from flask import Flask, render_template, Response, json
-from Surrogate.PCA9685 import PCA9685
+from flask_socketio import SocketIO
 from subprocess import call
 import time
 import os
 
-pwm = PCA9685(0x40, debug=False)
-pwm.setPWMFreq(50)
+app = Flask(__name__, instance_relative_config=True)
+app.config.from_mapping(
+    SECRET_KEY="dev",
+    DATABASE=os.path.join(app.instance_path, "flaskr.sqlite"),
+)
+socketio = SocketIO(app)
 
-class MotorDriver():
-    def __init__(self):
-        self.PWMA = 0
-        self.AIN1 = 1
-        self.AIN2 = 2
-        self.PWMB = 5
-        self.BIN1 = 3
-        self.BIN2 = 4
 
-    def MotorRun(self, motor, speed):
-        if speed > 100:
-            return
-        if(motor == 0):
-            pwm.setDutycycle(self.PWMA, speed)
-            pwm.setLevel(self.AIN1, 0)
-            pwm.setLevel(self.AIN2, 1)
-        else:
-            pwm.setDutycycle(self.PWMB, speed)
-            pwm.setLevel(self.BIN1, 0)
-            pwm.setLevel(self.BIN2, 1)
+@socketio.on('init')
+def handle_init(msg):
+    with open("log.txt") as f:
+        lines = f.readlines()
+        js = json.dumps(lines)
+        socketio.emit('log', {'lines': js})
 
-    def MotorStop(self, motor):
-        if (motor == 0):
-            pwm.setDutycycle(self.PWMA, 0)
-        else:
-            pwm.setDutycycle(self.PWMB, 0)
 
-Motor = MotorDriver()
+def log(msg=None):
+    ts = time.time() #datetime.datetime.now(pytz.timezone("US/Pacific"))
+    with open("log.txt", "a") as f:
+        line = msg + "," + str(ts) + '\n'
+        f.write(line)
+    socketio.emit('msg', { 'msg': line })
 
-def create_app(test_config=None):
-    # create and configure the app
-    app = Flask(__name__, instance_relative_config=True)
-    app.config.from_mapping(
-        SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
-    )
+def success():
+    data = { "success" : True }
+    js = json.dumps(data)
+    resp = Response(js, status=200, mimetype="application/json")
+    return resp
 
-    if test_config is None:
-        # load the instance config, if it exists, when not testing
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        # load the test config if passed in
-        app.config.from_mapping(test_config)
-
-    # ensure the instance folder exists
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
-
-    # a simple page that says hello
-    @app.route('/controls/')
-    @app.route('/controls/<name>')
-    def controls(name=None):
-        return render_template('controls.html', name=name)
-
-    @app.route('/turn/<dir>')
-    def turn(dir=None):
-        if dir == 'left':
-            print('left 2 s')
-            Motor.MotorRun(0, 100)
-        else:
-            print('right 2 s')
-            Motor.MotorRun(1, 100)
-        time.sleep(2)
-        Motor.MotorStop(0)
-        Motor.MotorStop(1)
-        data = {
-            'success' : True
-        }
-        js = json.dumps(data)
-        resp = Response(js, status=200, mimetype='application/json')
-
+@app.route("/get_log")
+def get_log(dir=None):
+    with open("log.txt") as f:
+        lines = f.readlines()
+        js = json.dumps(lines)
+        resp = Response(js, status=200, mimetype="application/json")
         return resp
 
-    @app.route('/stutdown')
-    def shutdown():
-        call("sudo shutdown -h now", shell=True)
+@app.route("/controls/")
+@app.route("/controls/<name>")
+def controls(name=None):
+    return render_template("controls.html", name=name)
 
-    @app.route('/reboot')
-    def reboot():
-        call("sudo reboot -h now", shell=True)
+@app.route("/turn/<dir>")
+def turn(dir=None):
+    log(dir)
+    return success()
 
-    return app
+@app.route("/shutdown")
+def shutdown():
+    call("sudo shutdown -h now", shell=True)
+
+@app.route("/reboot")
+def reboot():
+    call("sudo reboot -h now", shell=True)
+
+@app.route("/clear_log")
+def clear_log():
+    file = open("log.txt","r+")
+    file.truncate(0)
+    file.close()
+    return success()
+
+
+
+
+if __name__ == '__main__':
+    socketio.run(app)

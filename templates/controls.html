@@ -2,6 +2,7 @@
 <head>
   <title>Hello from Flask</title>
   <script src="{{ url_for('static', filename='jquery-3.6.0.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='socket.io.min.js') }}"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
@@ -15,6 +16,10 @@
   <section id='main'>
     <button id='shutdown'>Shutdown</button>
     <button id='reboot'>Reboot</button>
+    <button id='clear_log'>Clear Log</button>
+  </section>
+
+  <section id='log'>
   </section>
   <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
