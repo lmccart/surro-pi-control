@@ -5,13 +5,22 @@ from flask_socketio import SocketIO
 from subprocess import call
 import time
 import os
+import sqlite3
 
+conn = sqlite3.connect('womb-walk.db')
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_mapping(
     SECRET_KEY="dev",
     DATABASE=os.path.join(app.instance_path, "flaskr.sqlite"),
 )
 socketio = SocketIO(app)
+
+
+# c = conn.cursor()
+# c.execute('''CREATE TABLE sessions (datetime, name, email, phone)''')
+# c.execute("INSERT INTO sessions VALUES ('2021-11-20T00:11:00+01:00','','', '')")
+# conn.commit()
+# conn.close()
 
 
 @socketio.on('init')
