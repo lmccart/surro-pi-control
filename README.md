@@ -7,13 +7,13 @@
   chmod 755 ngrok
   sudo mv ngrok /usr/bin/
   ```
+* [Setup ngrok](https://dashboard.ngrok.com/get-started/setup)
 * Install motor hat drivers https://www.waveshare.com/wiki/Motor_Driver_HAT
 * Install git: `sudo apt install git`
 * Install flask: `sudo pip install flask`
 * Upgrade flask to 2.0: `pip install --upgrade Flask`
-* Install dependecies:
-  * `pip install simple-websocket`
-  * `pip install flask-socketio`
+* Install flask dependencies:
+  * `pip install -U flask-cors`
 
 
 
@@ -24,9 +24,14 @@ cd Surrogate
 export FLASK_APP=.
 export FLASK_ENV=development
 flask run
-ngrok start surrogate_tunnel
+ngrok start womb_walk_tunnel
 ```
 Howver, supervisor should start both of these process.
+
+## ngrok
+* Start tunnel from command line: `ngrok http --region=us --hostname=womb-walk.ngrok.io 80`
+* https://dashboard.ngrok.com/endpoints/domains
+* 
 
 
 ## Pi Utils
