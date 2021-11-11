@@ -24,7 +24,7 @@ Manual:
 cd womb-walk-pi
 export FLASK_APP=.
 export FLASK_ENV=development
-flask run
+flask run # or python -m flask run
 ngrok start womb_walk_tunnel
 ```
 Howver, supervisor should start both of these process.
