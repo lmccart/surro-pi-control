@@ -1,7 +1,7 @@
 ## Install
 * Install ngrok:
   ```
-  wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip (https://dashboard.ngrok.com/get-started/setup)
+  wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
   unzip ngrok-stable-linux-VERSION.zip
   rm ngrok-stable-linux-VERSION.zip
   chmod 755 ngrok
