@@ -21,7 +21,7 @@
 ## Running
 Manual:
 ```
-cd Surrogate
+cd womb-walk
 export FLASK_APP=.
 export FLASK_ENV=development
 flask run
