@@ -21,7 +21,7 @@
 ## Running
 Manual:
 ```
-cd womb-walk
+cd womb-walk-pi
 export FLASK_APP=.
 export FLASK_ENV=development
 flask run
