@@ -1,0 +1,13 @@
+[Unit]
+Description=Server Service
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/womb-walk/
+ExecStart=/home/pi/womb-walk/server.py
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target

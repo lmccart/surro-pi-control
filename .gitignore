@@ -19,3 +19,6 @@ build/
 *.DS_Store
 */.DS_Store
 ngrok
+ngrok.yml
+
+bcm2835-1*
