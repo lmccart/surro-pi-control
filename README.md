@@ -31,7 +31,7 @@ Howver, supervisor should start both of these process.
 
 ## Supervisor
 0. Reference: https://www.techcoil.com/blog/how-to-host-your-python-3-flask-mvp-with-supervisor-on-ubuntu-server-16-04/
-1. Make sure start.sh is executable: `sudo chmod +x /var/flaskapp/mvpapp/start-https-app.sh`
+1. Make sure start.sh is executable: `sudo chmod +x /home/pi/womb-walk/start.sh`
 2. Create supervisor conf file: `sudo nano /etc/supervisor/conf.d/womb-walk.conf`
 ```
 [program:womb-walk]
