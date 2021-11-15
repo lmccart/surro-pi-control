@@ -26,6 +26,13 @@ ngrok start womb_walk_tunnel
 ```
 Howver, systemctl should run these
 
+## Setup systemctl
+* First time on a new raspberry pi: run `pip install waitress && bash install-server.sh`
+* To restart (after editing server.py for example): `sudo systemctl restart server`
+* To check status: `systemctl status server`
+* To check logs: `journalctl -feu server`
+
+
 ## ngrok
 * Start tunnel from command line: `ngrok http --region=us --hostname=womb-walk.ngrok.io 80`
 * https://dashboard.ngrok.com/endpoints/domains
