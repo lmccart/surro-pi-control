@@ -45,3 +45,6 @@ Howver, supervisor should start both of these process.
 * ngrok: https://dashboard.ngrok.com/get-started/setup
 * https://www.techcoil.com/blog/how-to-host-your-python-3-flask-mvp-with-supervisor-on-ubuntu-server-16-04/
 * https://flask-socketio.readthedocs.io/en/latest/getting_started.html
+
+## Debug
+* `ssh pi@raspberrypi.local`
