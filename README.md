@@ -11,7 +11,7 @@
 * Install motor hat drivers https://www.waveshare.com/wiki/Motor_Driver_HAT
 * Install flask: `sudo pip install flask`
 * Upgrade flask to 2.0: `pip install --upgrade Flask`
-* Install flask dependencies:
+* Install flask dependencies: 
   * `pip install -U flask-cors`
 * Install git: `sudo apt install git`
 * [Generate ssh key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
@@ -21,13 +21,30 @@
 ## Running
 Manual:
 ```
-cd womb-walk
+cd womb-walk-pi
 export FLASK_APP=.
 export FLASK_ENV=development
-flask run
+flask run # or python -m flask run
 ngrok start womb_walk_tunnel
 ```
 Howver, supervisor should start both of these process.
+
+## Supervisor
+0. Reference: https://www.techcoil.com/blog/how-to-host-your-python-3-flask-mvp-with-supervisor-on-ubuntu-server-16-04/
+1. Make sure start.sh is executable: `sudo chmod +x /home/pi/womb-walk/start.sh`
+2. Create supervisor conf file: `sudo nano /etc/supervisor/conf.d/womb-walk.conf`
+```
+[program:womb-walk]
+directory=/home/pi/womb-walk
+command=/bin/bash -E -c ./start.sh
+autostart=true
+autorestart=true
+stopsignal=INT
+stopasgroup=true
+killasgroup=true
+```
+3. Restart supervisor: `sudo systemctl restart supervisor.service`
+4. Supervisor control panel: `sudo supervisorctl`
 
 ## ngrok
 * Start tunnel from command line: `ngrok http --region=us --hostname=womb-walk.ngrok.io 80`
@@ -43,5 +60,7 @@ Howver, supervisor should start both of these process.
 * flask: https://flask.palletsprojects.com/en/2.0.x/tutorial/factory/
 * motor hat: https://www.waveshare.com/wiki/Motor_Driver_HAT
 * ngrok: https://dashboard.ngrok.com/get-started/setup
-* https://www.techcoil.com/blog/how-to-host-your-python-3-flask-mvp-with-supervisor-on-ubuntu-server-16-04/
 * https://flask-socketio.readthedocs.io/en/latest/getting_started.html
+
+## Debug
+* `ssh pi@raspberrypi.local`
