@@ -11,8 +11,7 @@
 * Install motor hat drivers https://www.waveshare.com/wiki/Motor_Driver_HAT
 * Install flask: `sudo pip install flask`
 * Upgrade flask to 2.0: `pip install --upgrade Flask`
-* Install flask dependencies:
-  * `pip install -U flask-cors`
+* Install flask dependencies: `pip install -r requirements.txt`
 * Install git: `sudo apt install git`
 * [Generate ssh key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 * Clone repo: `git clone git@github.com:lmccart/womb-walk-pi.git`
